@@ -1,8 +1,23 @@
+import {  NavLink } from "react-router";
+
 const Navbar = () => {
+    const links = <>
+      <li>
+        <NavLink to={"/"} className={({isActive}) => `mr-4 ${isActive ? "text-green-500 border border-green-500" : ""}`}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/Books"} className={({isActive}) => `mr-4 ${isActive ? "text-green-500 border border-green-500" : ""}`}>Listed Books</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/pages-to-read"} className={({isActive}) => `${isActive ? "text-green-500 border border-green-500" : ""}`}>Pages to Read</NavLink>
+      </li>
+    </>
+  
+
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm">
-        <div className="navbar-start">
+      <div className="navbar bg-base-100 container mx-auto">
+        <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -23,54 +38,21 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow font-semibold text-xl"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <h2 className="font-bold text-[28px]">Book Vibe</h2>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-base-100 w-40 z-1">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+          <ul className="menu menu-horizontal px-1 font-semibold text-[18px]">
+            {links}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-4">
+          <button className="btn btn-success text-white font-semibold text-[18px]">Sign In</button>
+          <button className="btn btn-info text-white font-semibold text-[18px]">Sign Up</button>
         </div>
       </div>
     </div>
